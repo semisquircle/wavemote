@@ -20,7 +20,6 @@ const SHAKE_TIMEOUT = 200;
 var lastShakeTime = 0;
 
 
-
 function recenter() {
 	isRecentered = true;
 	isRecentering = false;
@@ -56,7 +55,6 @@ var Buttons = {
 		return this.stack.includes(btn);
 	}
 }
-
 
 
 listen("arduino-update", function(data) {
@@ -108,7 +106,6 @@ listen("arduino-update", function(data) {
 		lastAz = az; */
 	}
 
-
 	//* Dpad buttons
 	for (let d = 0; d < dirNames.length; d++) {
 		let dir = dirNames[d];
@@ -138,7 +135,7 @@ listen("arduino-update", function(data) {
 						default:
 							let char = "";
 							if (quadEl.children().length > 1) {
-								char = quadEl.find(`.squircle-char[data-case="${currentCase}"]`).attr("data-char");
+								char = quadEl.find(`.squircle-char[data-case="${currentCase}"][data-diacritic="${currentDiacritic}"]`).attr("data-char");
 							} else {
 								char = quadEl.find(".squircle-char").attr("data-char");
 							}
@@ -159,7 +156,6 @@ listen("arduino-update", function(data) {
 		}
 	}
 
-
 	//* Select button
 	if (remote.btns.select !== newRemote.btns.select) {
 		// On select button down
@@ -178,14 +174,16 @@ listen("arduino-update", function(data) {
 
 		// On select button up
 		else {
-			if (!justRecentered) nextCase();
+			if (!justRecentered) {
+				if (currentLang == "jpn") nextDiacritic();
+				else nextCase();
+			}
 			Buttons.remove("select");
 			clearInterval(Buttons.recenterTimer);
 			isRecentering = false;
 			justRecentered = false;
 		}
 	}
-
 
 	remote = structuredClone(newRemote);
 });

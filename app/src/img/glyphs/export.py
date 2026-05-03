@@ -35,7 +35,7 @@ def export(lang):
 			if isinstance(item, list):
 				extract_chars(item)
 			else:
-				if ord(item) != 9251 and ord(item) != 9003:
+				if ord(item) != 9251 and ord(item) != 9003 and ord(item) != 32:
 					chars.append(ord(item))
 	
 	with open("../../keyboards.json") as f:
@@ -93,4 +93,8 @@ def export(lang):
 	print(f"Exported {len(chars)} characters.")
 
 
-export("eng")
+if __name__ == "__main__":
+	# export("eng")
+	# export("gre")
+	# export("heb")
+	export("jpn")

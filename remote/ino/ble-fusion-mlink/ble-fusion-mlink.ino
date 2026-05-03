@@ -15,15 +15,15 @@ float gxOffset = 0, gyOffset = 0, gzOffset = 0;
 float deltat;
 float yaw, pitch, roll;
 
-const float EARTH_G = 9.80665;		// m/s²
-const float M_FIELD = 43.636392;	// μT
-const float M_DEC = -8.661414;		// deg
+const float EARTH_G = 9.800994;		// m/s²
+const float M_FIELD = 45.289908;	// μT
+const float M_DEC = -8.758839;		// deg
 
-const float M_HARD[3] = {-30.115516, 49.942568, -25.54026};
+const float M_HARD[3] = {-16.206860, 68.225762, -128.966136};
 const float M_SOFT[3][3] = {
-	{1.307718, 0.001586, 0.064617},
-	{0.001586, 1.239569, -0.053351},
-	{0.064617, -0.053351, 0.717372}
+	{1.170539, -0.016936, -0.015678},
+	{-0.016936, 1.109033, 0.007859},
+	{-0.015678, 0.007859, 0.997975}
 };
 
 // mLink/buttons

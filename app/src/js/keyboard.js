@@ -98,7 +98,6 @@ function nextDiacritic() {
 }
 
 
-
 var currentPhrase = 0;
 const phrases = [
 	"the quick brown fox jumps over the 75 lazy dogs",

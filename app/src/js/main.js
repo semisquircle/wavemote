@@ -2,7 +2,6 @@ const invoke = window.__TAURI__.core.invoke;
 const listen = window.__TAURI__.event.listen;
 
 
-
 var keyboards;
 var currentLang;
 var currentLangObject;
@@ -24,7 +23,6 @@ var totalDiacriticCount = 0;
 const dirNames = ["left", "up", "right", "down"];
 
 
-
 // Asynchronous SVG injecting
 function getSvg(path) {
 	let foo;
@@ -41,7 +39,6 @@ function getSvg(path) {
 }
 
 
-
 // Squircles :-)
 var squircleBtnBackEl = getSvg("img/squircles/outlines/straight.svg");
 var squircleBtn = $(`
@@ -50,7 +47,6 @@ var squircleBtn = $(`
 		<div class="squircle-btn-label"></div>
 	</div>
 `);
-
 
 
 // Changing screens
@@ -72,7 +68,6 @@ function nextScreen() {
 }
 
 
-
 // On load
 $(document).ready(async function() {
 	invoke("disconnect_ble_device");
@@ -85,11 +80,17 @@ $(document).ready(async function() {
 });
 
 
-
 // Dev stuff
 $(document).on("keydown", function(e) {
 	if (e.code == "Space") {
 		recenter();
+		// if (currentScreen == "calib") changeScreen("keyboard");
 		nextScreen();
+	}
+	else if (e.key == "Shift") {
+		nextCase();
+	}
+	else if (e.key == "Alt") {
+		nextDiacritic();
 	}
 });

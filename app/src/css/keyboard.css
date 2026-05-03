@@ -28,8 +28,12 @@
 [data-current-iso="eng"][data-current-orient="horiz"] {--squircle-diagonal: 10.5vw;}
 [data-current-iso="eng"][data-current-orient="vert"]  {--squircle-diagonal: 8vw;}
 
+[data-current-iso="gre"][data-current-orient="horiz"] {--squircle-diagonal: 10.5vw;}
+[data-current-iso="gre"][data-current-orient="vert"]  {--squircle-diagonal: 9vw;}
+
 [data-current-iso="heb"][data-current-orient="horiz"] {--squircle-diagonal: 10.5vw;}
 [data-current-iso="heb"][data-current-orient="vert"]  {--squircle-diagonal: 9vw;}
+[data-current-iso="heb"] #keyboard-input { transform: scaleX(-1); }
 
 [data-current-iso="jpn"][data-current-orient="horiz"] {--squircle-diagonal: 9.5vw;}
 [data-current-iso="jpn"][data-current-orient="vert"]  {--squircle-diagonal: 9vw;}

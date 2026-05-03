@@ -27,7 +27,6 @@ $("#lang-option-container").on("click", ".squircle-btn", function() {
 });
 
 
-
 // Orientation
 function generateOrientOptions() {
 	for (let o = 0; o < currentLangObject.orients.length; o++) {
@@ -54,24 +53,24 @@ $("#orient-option-container").on("click", ".squircle-btn", async function() {
 	generateKeyboard();
 
 	// Before scanning
-	/* let btIcon = getSvg("img/bluetooth.svg");
+	let btIcon = getSvg("img/bluetooth.svg");
 	$("#ble-icon").html(btIcon);
 	changeScreen("ble");
 	bleDevices = await invoke("scan_ble_devices");
 
 	// After scanning
 	generateBLEDevices();
-	$("#ble-screen").attr("data-scanning", false); */
-	changeScreen("calib");
-	$("body").attr("data-connection", "connected");
+	$("#ble-screen").attr("data-scanning", false);
+	// changeScreen("calib");
+	// $("body").attr("data-connection", "connected");
 });
-
 
 
 // BLE
 function generateBLEDevices() {
 	$("#ble-devices-list").empty();
 
+	bleDevices = bleDevices.filter(str => !/^\d/.test(str));
 	bleDevices.sort();
 	let deviceCount = parseInt($("#ble-screen").css("--device-count"));
 	let firstNDevices = bleDevices.slice(0, deviceCount);

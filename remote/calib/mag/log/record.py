@@ -5,12 +5,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-SER_PORT = "/dev/cu.usbmodem142301"
+SER_PORT = '/dev/cu.usbmodem142301'
 SER_BAUD = 115200
 SAMPLE_FREQ = 10  # Frequency to record magnetometer readings at [Hz]
 T_SAMPLE = 60  # Total time to read mangetometer readings [sec]
 OUTPUT_FILENAME = 'magdata.txt'  # Output data file name
-
 
 
 class SerialPort:
@@ -50,7 +49,6 @@ class SerialPort:
 	def Close(self):
 		"""Close serial connection."""
 		self.ser.close()
-
 
 
 class PlotPoints3D:
@@ -110,15 +108,14 @@ for currMeas in range(N):
 	RawDataPlot.AddPoint(mx, my, mz)  # Add point to 3D plot
 
 
-
 # After measurements are complete, write data to file
 Arduino.Close()
 print('Sensor Reading Complete!')
 
 print('Writing data to {} ...'.format(OUTPUT_FILENAME))
-for i in range(N):
-	with open(OUTPUT_FILENAME, 'a', newline='') as f:
-		writer = csv.writer(f, delimiter='\t')
+with open(OUTPUT_FILENAME, 'w', newline='') as f:
+	writer = csv.writer(f, delimiter='\t')
+	for i in range(N):
 		writer.writerow([measurements[i, 0], measurements[i, 1], measurements[i, 2]])
 
 plt.show()
