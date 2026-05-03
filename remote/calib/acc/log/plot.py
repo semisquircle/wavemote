@@ -1,30 +1,3 @@
-"""
-
-PLOT UNCALIBRTED AND CALIBRATED ACCELEROMETER MEASUREMENTS
-
-Read data file with raw measurements and compare calibrated vs. uncalibrated
-measurements.
-
-Code By: Michael Wrona
-
-The calibration equation is:
-    h_calib = A * (h_meas - b)
-
-h_calib: Calibrated measurements (3x1)
-A: Scale factor and misalignment correction matrix (3x3, symmetric)
-h_meas: Raw measurements (3x1)
-b: Biases correction vector (3x1)
-
-Calibration parametrers were determined by the Magneto calibration software (see Resources).
-
-Resources
----------
-Magneto calibration software developed by Sailboat Instruments blog
-    https://sites.google.com/site/sailboatinstruments1/home
-
-"""
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 
